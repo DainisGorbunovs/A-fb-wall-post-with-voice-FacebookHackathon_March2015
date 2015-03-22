@@ -1,0 +1,17 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script>
+	// Rares Urs user Id
+	var userId = 671461162982851;
+	
+	var accessToken = "EDIT_THIS_WITH_YOUR_TOKEN";
+	function sayIt(data)
+	{
+		var msg = new SpeechSynthesisUtterance(data);
+		window.speechSynthesis.speak(msg);
+	}
+	$.get("https://graph.facebook.com/v2.2/" + userId + "/feed?access_token=" + accessToken + "&format=json&method=get&pretty=0&suppress_http_code=1",
+		function(data) {
+			sayIt(data["data"][0].message);
+		});
+</script>
